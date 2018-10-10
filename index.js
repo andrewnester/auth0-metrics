@@ -31,7 +31,7 @@ function Auth0Metrics (segmentKey, dwhEndpoint, label, options) {
 
   // validate required options
   if ('string' !== typeof segmentKey) throw new Error('`segmentKey` required as first parameter.');
-  if ('string' !== typeof dwhEndpoint) throw new Error('`dwhEndpoint` required as first parameter.');
+  if ('string' !== typeof dwhEndpoint) throw new Error('`dwhEndpoint` required as second parameter.');
 
   // Instance properties and options
   this.$options = {};
