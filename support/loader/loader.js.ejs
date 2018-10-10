@@ -17,8 +17,19 @@
   <%= locals.globalNamespace %>.load = loader;
 
   function loader(config) {
-    // TODO: validate arguments and throw an error if needed
-
+    if (!config) {
+      console.error("config object must be passed to loader");
+      return;
+    }
+    if ('string' !== typeof config.segmentKey) {
+      console.error("segmentKey option required");
+      return;
+    }
+    if ('string' !== typeof config.dwhEndpoint) {
+      console.error("dwhEndpoint option required");
+      return;
+    }
+    
     if(null != window.Auth0Metrics){
       window.<%= locals.globalNamespace %> = new Auth0Metrics(config.segmentKey, config.dwhEndpoint, config.label, config.options);
       if (config.onReady) window.<%= locals.globalNamespace %>.ready(config.onReady);
